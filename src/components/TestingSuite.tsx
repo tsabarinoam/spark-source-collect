@@ -757,7 +757,7 @@ export function TestingSuite() {
                   </div>
                   <div>
                     <span className="text-muted-foreground">Last Run:</span>
-                    <span className="ml-2 font-medium">{test.lastRun.toLocaleDateString()}</span>
+                    <span className="ml-2 font-medium">{new Date(test.lastRun).toLocaleDateString()}</span>
                   </div>
                 </div>
 
@@ -824,7 +824,7 @@ export function TestingSuite() {
                     <div>
                       <h4 className="font-medium">{component.component}</h4>
                       <p className="text-sm text-muted-foreground">
-                        Last checked: {component.lastCheck.toLocaleTimeString()}
+                        Last checked: {new Date(component.lastCheck).toLocaleTimeString()}
                       </p>
                     </div>
                   </div>

@@ -687,7 +687,7 @@ export function MLRelevanceModels() {
                 {/* Model Details */}
                 <div className="text-sm text-muted-foreground space-y-1">
                   <div>Training Data: {model.trainingData.toLocaleString()} samples</div>
-                  <div>Last Trained: {model.lastTrained.toLocaleDateString()}</div>
+                  <div>Last Trained: {new Date(model.lastTrained).toLocaleDateString()}</div>
                   <div>Features: {model.features.length} active features</div>
                 </div>
 

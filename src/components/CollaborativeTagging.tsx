@@ -724,7 +724,7 @@ export function CollaborativeTagging() {
                     <div>
                       <div className="font-medium">{contributor.username}</div>
                       <div className="text-sm text-muted-foreground">
-                        Member since {contributor.joinedAt.toLocaleDateString()}
+                        Member since {new Date(contributor.joinedAt).toLocaleDateString()}
                       </div>
                     </div>
                   </div>

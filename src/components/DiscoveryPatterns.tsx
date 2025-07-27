@@ -615,7 +615,7 @@ export function DiscoveryPatterns() {
                       <div className="flex items-center gap-4 text-xs text-muted-foreground">
                         <span>{result.repository.language}</span>
                         <span>★ {result.repository.stars}</span>
-                        <span>{result.timestamp.toLocaleDateString()}</span>
+                        <span>{new Date(result.timestamp).toLocaleDateString()}</span>
                       </div>
 
                       {result.matchedCriteria.length > 0 && (

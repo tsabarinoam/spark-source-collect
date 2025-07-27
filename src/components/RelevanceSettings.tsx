@@ -474,7 +474,7 @@ export function RelevanceSettings() {
                 </Button>
                 
                 <div className="text-sm text-muted-foreground flex items-center">
-                  Last trained: {mlStats.lastTraining.toLocaleDateString()} • 
+                  Last trained: {new Date(mlStats.lastTraining).toLocaleDateString()} • 
                   Model v{mlStats.modelVersion} • 
                   {mlStats.totalSamples} samples
                 </div>

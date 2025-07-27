@@ -458,7 +458,7 @@ export function WebhookManager() {
                       <span className="text-muted-foreground">Last Triggered:</span>
                       <span className="ml-2 font-medium">
                         {webhook.lastTriggered 
-                          ? webhook.lastTriggered.toLocaleDateString()
+                          ? new Date(webhook.lastTriggered).toLocaleDateString()
                           : 'Never'
                         }
                       </span>
@@ -562,7 +562,7 @@ export function WebhookManager() {
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <span>{event.repository.language}</span>
                     <span>★ {event.repository.stars}</span>
-                    <span>{event.timestamp.toLocaleTimeString()}</span>
+                    <span>{new Date(event.timestamp).toLocaleTimeString()}</span>
                     {event.relevanceScore && (
                       <span>Relevance: {event.relevanceScore}%</span>
                     )}

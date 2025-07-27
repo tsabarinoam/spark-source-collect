@@ -85,7 +85,7 @@ export function BackupManager() {
         version: '1.0.0',
         components: backupComponents.map(c => c.id),
         status: 'creating',
-        description: description || `${automatic ? 'Automatic' : 'Manual'} backup - ${timestamp.toLocaleDateString()}`,
+        description: description || `${automatic ? 'Automatic' : 'Manual'} backup - ${new Date(timestamp).toLocaleDateString()}`,
         automatic
       }
 
@@ -172,7 +172,7 @@ export function BackupManager() {
       toast.info('Restoring data components...')
       
       await new Promise(resolve => setTimeout(resolve, 3000))
-      toast.success(`Successfully restored from backup created on ${backup.timestamp.toLocaleDateString()}`)
+      toast.success(`Successfully restored from backup created on ${new Date(backup.timestamp).toLocaleDateString()}`)
 
     } catch (error) {
       toast.error('Restore process failed')
