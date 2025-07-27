@@ -4,9 +4,11 @@ import { Dashboard } from './components/Dashboard'
 import { SourceCollector } from './components/SourceCollector'
 import { AnalyticsView } from './components/AnalyticsView'
 import { SearchInterface } from './components/SearchInterface'
+import { WebhookManager } from './components/WebhookManager'
+import { WebhookIntegration } from './components/WebhookIntegration'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'dashboard' | 'collector' | 'analytics' | 'search'
+type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('dashboard')
@@ -17,6 +19,8 @@ function App() {
         return <Dashboard />
       case 'collector':
         return <SourceCollector />
+      case 'webhooks':
+        return <WebhookManager />
       case 'analytics':
         return <AnalyticsView />
       case 'search':
@@ -28,6 +32,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background font-display">
+      {/* Background webhook integration processor */}
+      <WebhookIntegration />
+      
       <div className="flex h-screen">
         <Sidebar currentView={currentView} onViewChange={setCurrentView} />
         <main className="flex-1 overflow-auto">

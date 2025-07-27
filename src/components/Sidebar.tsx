@@ -6,12 +6,13 @@ import {
   ChartBar, 
   MagnifyingGlass,
   Sparkles,
-  GitBranch
+  GitBranch,
+  Webhook
 } from '@phosphor-icons/react'
 
 interface SidebarProps {
   currentView: string
-  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search') => void
+  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks') => void
 }
 
 export function Sidebar({ currentView, onViewChange }: SidebarProps) {
@@ -26,7 +27,13 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       id: 'collector',
       label: 'Source Collector',
       icon: Plus,
-      badge: 'New'
+      badge: null
+    },
+    {
+      id: 'webhooks',
+      label: 'GitHub Webhooks',
+      icon: Webhook,
+      badge: 'Auto'
     },
     {
       id: 'analytics',
