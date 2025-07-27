@@ -7,9 +7,14 @@ import { SearchInterface } from './components/SearchInterface'
 import { WebhookManager } from './components/WebhookManager'
 import { WebhookIntegration } from './components/WebhookIntegration'
 import { DiscoveryPatterns } from './components/DiscoveryPatterns'
+import { RelevanceSettings } from './components/RelevanceSettings'
+import { CollaborativeTagging } from './components/CollaborativeTagging'
+import { MLRelevanceModels } from './components/MLRelevanceModels'
+import { TestingSuite } from './components/TestingSuite'
+import { BackupManager } from './components/BackupManager'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns'
+type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'backup'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('dashboard')
@@ -24,6 +29,16 @@ function App() {
         return <WebhookManager />
       case 'patterns':
         return <DiscoveryPatterns />
+      case 'relevance':
+        return <RelevanceSettings />
+      case 'tagging':
+        return <CollaborativeTagging />
+      case 'ml-models':
+        return <MLRelevanceModels />
+      case 'testing':
+        return <TestingSuite />
+      case 'backup':
+        return <BackupManager />
       case 'analytics':
         return <AnalyticsView />
       case 'search':
