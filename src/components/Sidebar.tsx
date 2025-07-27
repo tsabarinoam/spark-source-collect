@@ -14,12 +14,13 @@ import {
   Brain,
   TestTube,
   Shield,
-  Play
+  Play,
+  Globe
 } from '@phosphor-icons/react'
 
 interface SidebarProps {
   currentView: string
-  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup') => void
+  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org') => void
 }
 
 export function Sidebar({ currentView, onViewChange }: SidebarProps) {
@@ -92,6 +93,13 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       label: 'Backup & Recovery',
       icon: Shield,
       badge: 'Safe',
+      section: 'system'
+    },
+    {
+      id: 'apache-spark-org',
+      label: 'Apache Spark Org Tests',
+      icon: Globe,
+      badge: 'Final',
       section: 'system'
     },
     {

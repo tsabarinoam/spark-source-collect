@@ -22,7 +22,8 @@ import {
   Lightbulb,
   ChartBar,
   Gear,
-  Warning
+  Warning,
+  Plus
 } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 

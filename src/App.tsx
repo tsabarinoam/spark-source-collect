@@ -13,9 +13,10 @@ import { MLRelevanceModels } from './components/MLRelevanceModels'
 import { TestingSuite } from './components/TestingSuite'
 import { WorkflowTester } from './components/WorkflowTester'
 import { BackupManager } from './components/BackupManager'
+import { ApacheSparkOrganizationTester } from './components/ApacheSparkOrganizationTester'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup'
+type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('dashboard')
@@ -42,6 +43,8 @@ function App() {
         return <WorkflowTester />
       case 'backup':
         return <BackupManager />
+      case 'apache-spark-org':
+        return <ApacheSparkOrganizationTester />
       case 'analytics':
         return <AnalyticsView />
       case 'search':
