@@ -15,12 +15,12 @@ import {
   TestTube,
   Shield,
   Play,
-  Globe
+  Rocket
 } from '@phosphor-icons/react'
 
 interface SidebarProps {
   currentView: string
-  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org') => void
+  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org' | 'comprehensive-testing' | 'final-validation') => void
 }
 
 export function Sidebar({ currentView, onViewChange }: SidebarProps) {
@@ -99,7 +99,21 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       id: 'apache-spark-org',
       label: 'Apache Spark Org Tests',
       icon: Globe,
-      badge: 'Final',
+      badge: 'Org',
+      section: 'system'
+    },
+    {
+      id: 'comprehensive-testing',
+      label: 'Comprehensive Tests',
+      icon: TestTube,
+      badge: 'Full',
+      section: 'system'
+    },
+    {
+      id: 'final-validation',
+      label: 'Final Validation',
+      icon: Rocket,
+      badge: 'Deploy',
       section: 'system'
     },
     {

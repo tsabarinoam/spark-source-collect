@@ -14,9 +14,11 @@ import { TestingSuite } from './components/TestingSuite'
 import { WorkflowTester } from './components/WorkflowTester'
 import { BackupManager } from './components/BackupManager'
 import { ApacheSparkOrganizationTester } from './components/ApacheSparkOrganizationTester'
+import { ComprehensiveTestRunner } from './components/ComprehensiveTestRunner'
+import { FinalSystemValidation } from './components/FinalSystemValidation'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org'
+type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org' | 'comprehensive-testing' | 'final-validation'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('dashboard')
@@ -45,6 +47,10 @@ function App() {
         return <BackupManager />
       case 'apache-spark-org':
         return <ApacheSparkOrganizationTester />
+      case 'comprehensive-testing':
+        return <ComprehensiveTestRunner />
+      case 'final-validation':
+        return <FinalSystemValidation />
       case 'analytics':
         return <AnalyticsView />
       case 'search':
