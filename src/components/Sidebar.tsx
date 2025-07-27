@@ -15,7 +15,8 @@ import {
   TestTube,
   Shield,
   Play,
-  Rocket
+  Rocket,
+  Globe
 } from '@phosphor-icons/react'
 
 interface SidebarProps {
