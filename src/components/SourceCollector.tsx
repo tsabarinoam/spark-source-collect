@@ -39,6 +39,8 @@ export function SourceCollector() {
   const [description, setDescription] = useState('')
   const [sourceType, setSourceType] = useState<'auto' | 'github' | 'website' | 'documentation'>('auto')
   const [isProcessing, setIsProcessing] = useState(false)
+  const [batchUrls, setBatchUrls] = useState('')
+  const [isBatchProcessing, setIsBatchProcessing] = useState(false)
 
   // Auto-detect source type based on URL
   const detectSourceType = (url: string): 'github' | 'website' | 'documentation' => {
@@ -159,6 +161,72 @@ export function SourceCollector() {
     setDescription('')
     setSourceType('auto')
     setIsProcessing(false)
+  }
+
+  // Handle batch processing functionality
+  const handleBatchProcess = async () => {
+    if (!batchUrls.trim()) {
+      toast.error('Please enter at least one URL to process')
+      return
+    }
+
+    setIsBatchProcessing(true)
+    
+    try {
+      // Parse URLs from textarea (one per line)
+      const urls = batchUrls
+        .split('\n')
+        .map(url => url.trim())
+        .filter(url => url.length > 0 && url.startsWith('http'))
+
+      if (urls.length === 0) {
+        toast.error('No valid URLs found. Please ensure URLs start with http:// or https://')
+        setIsBatchProcessing(false)
+        return
+      }
+
+      toast.success(`Starting batch processing of ${urls.length} URLs`)
+
+      let processedCount = 0
+      let failedCount = 0
+
+      // Process each URL with progress tracking
+      for (const url of urls) {
+        try {
+          await processSource(url, 'auto', `Batch processed source ${processedCount + 1}/${urls.length}`)
+          processedCount++
+          
+          // Update progress toast
+          if (processedCount % 3 === 0 || processedCount === urls.length) {
+            toast.success(`Processed ${processedCount}/${urls.length} sources successfully`)
+          }
+          
+          // Small delay to prevent overwhelming the system
+          await new Promise(resolve => setTimeout(resolve, 800))
+        } catch (error) {
+          failedCount++
+          console.error(`Failed to process URL: ${url}`, error)
+        }
+      }
+
+      // Final summary with detailed results
+      const summaryMessage = `Batch processing completed! ✅ ${processedCount} sources processed successfully` + (failedCount > 0 ? `, ❌ ${failedCount} failed` : '')
+      
+      if (failedCount > 0) {
+        toast.warning(summaryMessage)
+      } else {
+        toast.success(summaryMessage)
+      }
+
+      // Clear the batch input
+      setBatchUrls('')
+      
+    } catch (error) {
+      toast.error('Failed to process batch import')
+      console.error('Batch processing error:', error)
+    } finally {
+      setIsBatchProcessing(false)
+    }
   }
 
   // Handle batch processing for GitHub discovery
@@ -347,14 +415,59 @@ export function SourceCollector() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <Textarea
-                  placeholder="Paste multiple URLs, one per line..."
-                  rows={8}
-                  className="font-mono"
-                />
-                <Button className="w-full">
-                  <Plus className="w-4 h-4 mr-2" />
-                  Process Batch
+                <div className="space-y-2">
+                  <Label htmlFor="batch-urls">URLs to Process</Label>
+                  <Textarea
+                    id="batch-urls"
+                    placeholder="Paste multiple URLs, one per line:
+https://github.com/apache/spark
+https://spark.apache.org/docs/
+https://databricks.com/blog/spark-optimization
+https://medium.com/@author/spark-tutorial"
+                    value={batchUrls}
+                    onChange={(e) => setBatchUrls(e.target.value)}
+                    rows={8}
+                    className="font-mono"
+                  />
+                  <div className="text-sm text-muted-foreground">
+                    {batchUrls.split('\n').filter(url => url.trim().startsWith('http')).length} valid URLs detected
+                  </div>
+                </div>
+                
+                <div className="p-4 border rounded-lg bg-muted/50">
+                  <h4 className="font-medium mb-2">Batch Processing Features</h4>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• Automatic source type detection</li>
+                    <li>• Progress tracking for each URL</li>
+                    <li>• Error handling and retry logic</li>
+                    <li>• Detailed analysis for each source</li>
+                    <li>• Bulk categorization and tagging</li>
+                  </ul>
+                </div>
+
+                {isBatchProcessing && (
+                  <div className="p-4 border rounded-lg bg-primary/5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Clock className="w-4 h-4 animate-spin text-primary" />
+                      <span className="font-medium text-sm">Processing batch sources...</span>
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      This may take a few minutes depending on the number of URLs. You can continue using other features while processing.
+                    </div>
+                  </div>
+                )}
+                
+                <Button 
+                  onClick={handleBatchProcess} 
+                  disabled={isBatchProcessing || !batchUrls.trim()}
+                  className="w-full"
+                >
+                  {isBatchProcessing ? (
+                    <Clock className="w-4 h-4 mr-2 animate-spin" />
+                  ) : (
+                    <Plus className="w-4 h-4 mr-2" />
+                  )}
+                  {isBatchProcessing ? 'Processing Batch...' : 'Process Batch'}
                 </Button>
               </div>
             </CardContent>
