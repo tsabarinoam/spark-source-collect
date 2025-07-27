@@ -6,9 +6,10 @@ import { AnalyticsView } from './components/AnalyticsView'
 import { SearchInterface } from './components/SearchInterface'
 import { WebhookManager } from './components/WebhookManager'
 import { WebhookIntegration } from './components/WebhookIntegration'
+import { DiscoveryPatterns } from './components/DiscoveryPatterns'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks'
+type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('dashboard')
@@ -21,6 +22,8 @@ function App() {
         return <SourceCollector />
       case 'webhooks':
         return <WebhookManager />
+      case 'patterns':
+        return <DiscoveryPatterns />
       case 'analytics':
         return <AnalyticsView />
       case 'search':

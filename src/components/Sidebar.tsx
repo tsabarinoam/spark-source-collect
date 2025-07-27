@@ -7,12 +7,13 @@ import {
   MagnifyingGlass,
   Sparkles,
   GitBranch,
-  Webhook
+  Webhook,
+  Target
 } from '@phosphor-icons/react'
 
 interface SidebarProps {
   currentView: string
-  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks') => void
+  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns') => void
 }
 
 export function Sidebar({ currentView, onViewChange }: SidebarProps) {
@@ -34,6 +35,12 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       label: 'GitHub Webhooks',
       icon: Webhook,
       badge: 'Auto'
+    },
+    {
+      id: 'patterns',
+      label: 'Discovery Patterns',
+      icon: Target,
+      badge: 'Smart'
     },
     {
       id: 'analytics',
