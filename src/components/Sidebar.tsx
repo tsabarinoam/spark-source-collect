@@ -16,12 +16,15 @@ import {
   Shield,
   Play,
   Rocket,
-  Globe
+  Globe,
+  Gear,
+  Bell,
+  Code
 } from '@phosphor-icons/react'
 
 interface SidebarProps {
   currentView: string
-  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org' | 'comprehensive-testing' | 'final-validation') => void
+  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org' | 'comprehensive-testing' | 'final-validation' | 'spark-setup' | 'spark-testing' | 'spark-notes') => void
 }
 
 export function Sidebar({ currentView, onViewChange }: SidebarProps) {
@@ -118,6 +121,27 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       section: 'system'
     },
     {
+      id: 'spark-setup',
+      label: 'Spark Integration Setup',
+      icon: Gear,
+      badge: 'Setup',
+      section: 'integration'
+    },
+    {
+      id: 'spark-testing',
+      label: 'Application Testing',
+      icon: Code,
+      badge: 'Test',
+      section: 'integration'
+    },
+    {
+      id: 'spark-notes',
+      label: 'Community Notes',
+      icon: Bell,
+      badge: 'Share',
+      section: 'integration'
+    },
+    {
       id: 'analytics',
       label: 'Analytics',
       icon: ChartBar,
@@ -138,6 +162,7 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
     { id: 'automation', label: 'Automation' },
     { id: 'intelligence', label: 'AI Intelligence' },
     { id: 'system', label: 'System' },
+    { id: 'integration', label: 'Spark Integration' },
     { id: 'insights', label: 'Analytics' }
   ]
 

@@ -16,9 +16,12 @@ import { BackupManager } from './components/BackupManager'
 import { ApacheSparkOrganizationTester } from './components/ApacheSparkOrganizationTester'
 import { ComprehensiveTestRunner } from './components/ComprehensiveTestRunner'
 import { FinalSystemValidation } from './components/FinalSystemValidation'
+import { SparkIntegrationSetup } from './components/SparkIntegrationSetup'
+import { SparkApplicationTester } from './components/SparkApplicationTester'
+import { SparkNotificationCenter } from './components/SparkNotificationCenter'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org' | 'comprehensive-testing' | 'final-validation'
+type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org' | 'comprehensive-testing' | 'final-validation' | 'spark-setup' | 'spark-testing' | 'spark-notes'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('dashboard')
@@ -51,6 +54,12 @@ function App() {
         return <ComprehensiveTestRunner />
       case 'final-validation':
         return <FinalSystemValidation />
+      case 'spark-setup':
+        return <SparkIntegrationSetup />
+      case 'spark-testing':
+        return <SparkApplicationTester />
+      case 'spark-notes':
+        return <SparkNotificationCenter />
       case 'analytics':
         return <AnalyticsView />
       case 'search':
