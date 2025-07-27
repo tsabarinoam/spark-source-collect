@@ -8,7 +8,7 @@ import { Switch } from '@/components/ui/switch'
 import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-import { useKV } from '@/hooks/use-kv'
+import { useKV } from '@github/spark/hooks'
 import { 
   Sliders,
   Target,

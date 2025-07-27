@@ -11,10 +11,11 @@ import { RelevanceSettings } from './components/RelevanceSettings'
 import { CollaborativeTagging } from './components/CollaborativeTagging'
 import { MLRelevanceModels } from './components/MLRelevanceModels'
 import { TestingSuite } from './components/TestingSuite'
+import { WorkflowTester } from './components/WorkflowTester'
 import { BackupManager } from './components/BackupManager'
 import { Toaster } from '@/components/ui/sonner'
 
-type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'backup'
+type View = 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup'
 
 function App() {
   const [currentView, setCurrentView] = useState<View>('dashboard')
@@ -37,6 +38,8 @@ function App() {
         return <MLRelevanceModels />
       case 'testing':
         return <TestingSuite />
+      case 'workflow-testing':
+        return <WorkflowTester />
       case 'backup':
         return <BackupManager />
       case 'analytics':

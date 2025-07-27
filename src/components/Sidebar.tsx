@@ -13,12 +13,13 @@ import {
   Tag,
   Brain,
   TestTube,
-  Shield
+  Shield,
+  Play
 } from '@phosphor-icons/react'
 
 interface SidebarProps {
   currentView: string
-  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'backup') => void
+  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup') => void
 }
 
 export function Sidebar({ currentView, onViewChange }: SidebarProps) {
@@ -77,6 +78,13 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       label: 'Testing Suite',
       icon: TestTube,
       badge: 'QA',
+      section: 'system'
+    },
+    {
+      id: 'workflow-testing',
+      label: 'Workflow Testing',
+      icon: Play,
+      badge: 'E2E',
       section: 'system'
     },
     {

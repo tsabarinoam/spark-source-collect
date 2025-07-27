@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Switch } from '@/components/ui/switch'
 import { Separator } from '@/components/ui/separator'
-import { useKV } from '@/hooks/use-kv'
+import { useKV } from '@github/spark/hooks'
 import { 
   Webhook,
   GitBranch,

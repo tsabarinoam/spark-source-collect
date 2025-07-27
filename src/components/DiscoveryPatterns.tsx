@@ -10,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Slider } from '@/components/ui/slider'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { useKV } from '@/hooks/use-kv'
+import { useKV } from '@github/spark/hooks'
 import { 
   MagnifyingGlass,
   Target,

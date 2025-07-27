@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useKV } from '@/hooks/use-kv'
+import { useKV } from '@github/spark/hooks'
 import { toast } from 'sonner'
 
 interface WebhookEvent {
