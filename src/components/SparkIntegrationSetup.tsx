@@ -14,9 +14,6 @@ import {
   Globe, 
   Terminal, 
   Download
-import { toast
-interface Setu
-  title: s
 } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
