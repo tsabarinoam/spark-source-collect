@@ -24,7 +24,7 @@ import {
 
 interface SidebarProps {
   currentView: string
-  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org' | 'comprehensive-testing' | 'final-validation' | 'spark-setup' | 'spark-testing' | 'spark-notes') => void
+  onViewChange: (view: 'dashboard' | 'collector' | 'analytics' | 'search' | 'webhooks' | 'patterns' | 'relevance' | 'tagging' | 'ml-models' | 'testing' | 'workflow-testing' | 'backup' | 'apache-spark-org' | 'comprehensive-testing' | 'final-validation' | 'final-validator' | 'spark-setup' | 'spark-testing' | 'spark-notes') => void
 }
 
 export function Sidebar({ currentView, onViewChange }: SidebarProps) {
@@ -118,6 +118,13 @@ export function Sidebar({ currentView, onViewChange }: SidebarProps) {
       label: 'Final Validation',
       icon: Rocket,
       badge: 'Deploy',
+      section: 'system'
+    },
+    {
+      id: 'final-validator',
+      label: 'System Validator',
+      icon: Shield,
+      badge: 'Prod',
       section: 'system'
     },
     {
