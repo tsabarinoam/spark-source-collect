@@ -1,19 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+  Termina
+  Rocket,rcle,
+  Download,
 import { 
   Package, 
-  Rocket, 
-  Settings, 
-  Terminal,
-  CheckCircle,
-  AlertCircle,
-  Download,
-  BookOpen,
-  Globe
 } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
@@ -112,6 +106,14 @@ interface SparkConfig {
         case 'fork-repo':
           await simulateRepositoryFork()
           break
+        case 'install-deps':
+          await simulateDependencyInstallation()
+          break
+        case 'configure-env':
+          await configureEnvironment()
+          break
+        case 'setup-webhooks':
+          await setupWebhookConfiguration()
         case 'install-deps':
           await simulateDependencyInstallation()
           break
@@ -225,14 +227,6 @@ MIT
      
                 </div>
      
-              <div className="flex gap-2">
-                  onClick=
-                  className="flex ite
-      'Configuring event handlers...',
-                </Button>
-                  variant="outline
-    ]
-    
                 </Button>
                   variant="outline" 
                   onClick={() => win
