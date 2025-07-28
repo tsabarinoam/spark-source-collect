@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react'
 import { Progress } from '@/components/ui/progress'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Input } from '@/components/ui/input'
 import {
-  CheckCircle, 
   Package, 
-  FileCode,
-  Rocket,
-} from '@phosphor-icons/react'
+  Rocket
 interface S
-  title: str
-  status: 'p
-  CheckCircle, 
-  AlertCircle, 
-  Package, 
+  status: '
+  AlertCirc
+  Globe,
+  Terminal,
+  Rocket,
+  BookOpen
+} from '@phosphor-icons/react'
+
+interface SetupStep {
+  id: string
   Globe,
   FileCode,
   Terminal,
@@ -29,15 +29,6 @@ interface SetupStep {
   progress: number
  
 
-      status: 'pending' as const,
-    },
-    {
-      description: 'Te
-      progress: 0
-  ])
-  const [sparkConfig, setSparkCon
-    webhookSecret
-    or
   })
   const [setupProgress, s
   const [isSetupRunning, setIsSetupR
