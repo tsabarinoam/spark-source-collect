@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Progress } from '@/components/ui/progress'
-import { Tabs, TabsContent, TabsList, TabsTrigger }
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
+import {
   CheckCircle, 
   Package, 
   FileCode,
   Rocket,
-} from '@
+} from '@phosphor-icons/react'
 interface S
   title: str
   status: 'p
