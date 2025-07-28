@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
-import { Badge } from '@/components/ui/badge'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Alert, AlertDescription } from '@/components/ui/alert'
+import { Tabs, TabsContent, TabsList, TabsTrigger }
 import { Input } from '@/components/ui/input'
   CheckCircle, 
   Package, 
@@ -40,6 +37,9 @@ interface SetupStep {
   const [sparkConfig, setSparkCon
     webhookSecret
     or
+  })
+  const [setupProgress, s
+  const [isSetupRunning, setIsSetupR
   })
   const [setupProgress, s
   const [isSetupRunning, setIsSetupR
@@ -81,9 +81,6 @@ interface SetupStep {
     githubToken: '',
     webhookSecret: '',
     sparkApiEndpoint: '',
-    organizationName: 'apache',
-    repositoryPrefix: 'spark'
-  })
 
   const [setupProgress, setSetupProgress] = useState(0)
   const [currentStep, setCurrentStep] = useState(0)
