@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, Ca
+import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
@@ -14,10 +14,10 @@ import {
   Settings, 
   Globe, 
   Terminal, 
-  BookOpen,
-  CheckCircle,
-  AlertCircle,
   Download
+import { toast
+interface Setu
+  title: s
 } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
@@ -67,68 +67,68 @@ export function SparkIntegrationSetup() {
       progress: 0
     },
     {
-      id: 'init-database',
-      title: 'Initialize Database',
-      description: 'Set up local storage and data structures',
+  }, [setupSteps])
+  /**
+   */
       status: 'pending',
-      progress: 0
-    },
-    {
-      id: 'verify-integration',
-      title: 'Verify Integration',
+        step.id =
+      
+    )
+    try {
+        case 'fork-repo':
       description: 'Test connection to Apache Spark ecosystem',
       status: 'pending',
-      progress: 0
-    }
-  ])
+        case 'con
+     
+    
 
   const [sparkConfig, setSparkConfig] = useKV<SparkConfig>('spark-integration-config', {
-    githubToken: '',
-    webhookSecret: '',
+          await veri
+        default:
     sparkApiEndpoint: 'https://api.github.com/repos/apache/spark',
     autoDiscovery: true
   })
 
-  const [setupProgress, setSetupProgress] = useState(0)
-  const [currentStep, setCurrentStep] = useState(0)
-  const [isSetupRunning, setIsSetupRunning] = useState(false)
-
-  // Calculate overall setup progress
-  useEffect(() => {
-    const completedSteps = setupSteps.filter(step => step.status === 'completed').length
-    const newProgress = (completedSteps / setupSteps.length) * 100
-    setSetupProgress(newProgress)
-  }, [setupSteps])
-
-  /**
-   * Execute a setup step with progress tracking and error handling
-   */
-  const executeSetupStep = async (stepId: string) => {
-    setSetupSteps(currentSteps => 
-      currentSteps.map(step => 
-        step.id === stepId 
-          ? { ...step, status: 'in-progress', progress: 0 }
-          : step
+            : step
       )
-    )
+      setSetupSteps(currentSteps => 
 
-    try {
-      switch (stepId) {
-        case 'fork-repo':
-          await simulateRepositoryFork()
-          break
-        case 'install-deps':
-          await simulateDependencyInstallation()
-          break
-        case 'configure-env':
-          await configureEnvironment()
-          break
-        case 'setup-webhooks':
-          await setupWebhookConfiguration()
-          break
-        case 'init-database':
-          await initializeLocalDatabase()
-          break
+            : step
+      )
+    }
+
+   * Simulate forking the reposit
+  const simulateRe
+
+     
+    ]
+    f
+      setSetupSteps(currentSteps => 
+          step.id === 'fork-repo' 
+            : step
+      )
+  }
+  /**
+   */
+    c
+
+      'lo
+    ]
+    for (let i = 0; i < d
+      setSetupSteps(currentSteps => 
+          step.
+            : step
+      )
+  }
+  /**
+   */
+    const confi
+      'Setting up environment 
+      'Testing permissions...'
+    
+      await new Promise(resol
+        currentSteps.map(step => 
+            ? {
         case 'verify-integration':
           await verifyIntegration()
           break
@@ -137,11 +137,11 @@ export function SparkIntegrationSetup() {
       }
 
       setSetupSteps(currentSteps => 
-        currentSteps.map(step => 
+    for (let i = 0; i < webhookSt
           step.id === stepId 
             ? { ...step, status: 'completed', progress: 100 }
             : step
-        )
+         
       )
     } catch (error) {
       setSetupSteps(currentSteps => 
@@ -152,7 +152,7 @@ export function SparkIntegrationSetup() {
         )
       )
       throw error
-    }
+    a
   }
 
   /**
@@ -179,12 +179,12 @@ export function SparkIntegrationSetup() {
   }
 
   /**
-   * Simulate dependency installation process
+   */
    */
   const simulateDependencyInstallation = async () => {
     const dependencies = [
-      '@octokit/rest',
-      'axios',
+        await executeS
+      toast.su
       'date-fns',
       'lodash',
       'cheerio'
@@ -197,9 +197,9 @@ export function SparkIntegrationSetup() {
           step.id === 'install-deps' 
             ? { ...step, progress: ((i + 1) / dependencies.length) * 100 }
             : step
-        )
+
       )
-    }
+- Git
   }
 
   /**
@@ -212,7 +212,7 @@ export function SparkIntegrationSetup() {
       'Configuring API endpoints...',
       'Testing permissions...'
     ]
-    
+   C
     for (let i = 0; i < configSteps.length; i++) {
       await new Promise(resolve => setTimeout(resolve, 1200))
       setSetupSteps(currentSteps => 
@@ -222,7 +222,7 @@ export function SparkIntegrationSetup() {
             : step
         )
       )
-    }
+5. **
   }
 
   /**
@@ -231,26 +231,26 @@ export function SparkIntegrationSetup() {
   const setupWebhookConfiguration = async () => {
     const webhookSteps = [
       'Creating webhook endpoint...',
-      'Validating webhook endpoints...',
+
       'Testing webhook connectivity...',
       'Registering with GitHub...'
-    ]
+5. Su
     
     for (let i = 0; i < webhookSteps.length; i++) {
       await new Promise(resolve => setTimeout(resolve, 1000))
       setSetupSteps(currentSteps => 
         currentSteps.map(step => 
-          step.id === 'setup-webhooks' 
+## License
             ? { ...step, progress: ((i + 1) / webhookSteps.length) * 100 }
-            : step
+`
         )
-      )
+    con
     }
-  }
+   
 
-  /**
+    t
    * Initialize local database and storage systems
-   */
+  ret
   const initializeLocalDatabase = async () => {
     await new Promise(resolve => setTimeout(resolve, 2000))
     // Initialize with some sample data
@@ -264,10 +264,10 @@ export function SparkIntegrationSetup() {
   const verifyIntegration = async () => {
     const verificationSteps = [
       'Connecting to Apache Spark repositories...',
-      'Testing API connectivity...',
+
       'Validating data access...',
       'Running integration tests...'
-    ]
+     
     
     for (let i = 0; i < verificationSteps.length; i++) {
       await new Promise(resolve => setTimeout(resolve, 1500))
@@ -277,29 +277,29 @@ export function SparkIntegrationSetup() {
             ? { ...step, progress: ((i + 1) / verificationSteps.length) * 100 }
             : step
         )
-      )
-    }
-  }
 
-  /**
+    }
+   
+
+     
    * Run the complete setup process
    */
   const runFullSetup = async () => {
-    setIsSetupRunning(true)
+                  onClick={
     try {
       for (let i = 0; i < setupSteps.length; i++) {
         setCurrentStep(i)
         await executeSetupStep(setupSteps[i].id)
-      }
-      toast.success('Spark Integration Setup completed successfully!')
+       
+                  View Docs
     } catch (error) {
       toast.error(`Setup failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setIsSetupRunning(false)
     }
-  }
+   
 
-  /**
+     
    * Generate installation documentation
    */
   const generateInstallationDocs = () => {
@@ -311,18 +311,18 @@ The Spark Source Intelligence Platform is an open-source tool for collecting, an
 
 ## Prerequisites
 
-- Node.js 18+ 
+              
 - Git
 - GitHub account
-- Basic knowledge of React and TypeScript
+                            'outline'
 
 ## Installation Steps
 
-1. **Fork the Repository**
+                          
    \`\`\`bash
    git clone https://github.com/YOUR_USERNAME/spark-intelligence-platform.git
    cd spark-intelligence-platform
-   \`\`\`
+         
 
 2. **Install Dependencies**
    \`\`\`bash
@@ -332,19 +332,19 @@ The Spark Source Intelligence Platform is an open-source tool for collecting, an
 3. **Configure Environment**
    Create a \`.env\` file with:
    \`\`\`
-   GITHUB_TOKEN=your_github_token
+        <TabsContent value="confi
    SPARK_API_ENDPOINT=https://api.github.com/repos/apache/spark
    WEBHOOK_SECRET=your_webhook_secret
    \`\`\`
 
 4. **Initialize Database**
-   \`\`\`bash
+             
    npm run init-db
-   \`\`\`
+         
 
-5. **Start Development Server**
+                  id="github-to
    \`\`\`bash
-   npm run dev
+              
    \`\`\`
 
 ## Features
@@ -354,25 +354,25 @@ The Spark Source Intelligence Platform is an open-source tool for collecting, an
 - **Collaborative Tagging**: Community-driven categorization system
 - **Advanced Analytics**: Comprehensive insights and trend analysis
 
-## Contributing
+               
 
 1. Fork the repository
-2. Create a feature branch
+                />
 3. Make your changes
-4. Add tests
+            
 5. Submit a pull request
 
 ## Testing
 
-\`\`\`bash
+          
 npm run test
 npm run test:integration
-\`\`\`
+
 
 ## License
 
 MIT License - see LICENSE file for details
-`
+ 
     
     const blob = new Blob([docs], { type: 'text/markdown' })
     const url = URL.createObjectURL(blob)
@@ -380,19 +380,19 @@ MIT License - see LICENSE file for details
     a.href = url
     a.download = 'installation-guide.md'
     a.click()
-    URL.revokeObjectURL(url)
+                </CardTitle>
     toast.success('Installation guide downloaded successfully!')
   }
 
   return (
-    <div className="space-y-6">
+                    <ul classNa
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Spark Integration Setup</h1>
           <p className="text-muted-foreground">
             Configure and deploy your Spark Source Intelligence Platform
-          </p>
-        </div>
+            </
+              
         <div className="flex items-center gap-2">
           <Badge variant={setupProgress === 100 ? "default" : "secondary"}>
             {setupProgress === 100 ? "Ready for Production" : "Setup Required"}
@@ -408,7 +408,7 @@ MIT License - see LICENSE file for details
         </TabsList>
 
         <TabsContent value="setup" className="space-y-6">
-          <Card>
+                
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Rocket className="h-5 w-5" />
@@ -417,13 +417,13 @@ MIT License - see LICENSE file for details
               <CardDescription>
                 Follow these steps to set up your Spark Intelligence Platform
               </CardDescription>
-            </CardHeader>
+            </Card>
             <CardContent className="space-y-6">
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium">Overall Progress</span>
                   <span className="text-sm text-muted-foreground">{Math.round(setupProgress)}%</span>
-                </div>
+
                 <Progress value={setupProgress} className="h-2" />
               </div>
 
@@ -435,7 +435,7 @@ MIT License - see LICENSE file for details
                 >
                   <Rocket className="h-4 w-4" />
                   {isSetupRunning ? 'Setting up...' : setupProgress === 100 ? 'Setup Complete' : 'Start Setup'}
-                </Button>
+
                 <Button 
                   variant="outline" 
                   onClick={generateInstallationDocs}
@@ -448,9 +448,9 @@ MIT License - see LICENSE file for details
                   variant="outline" 
                   className="flex items-center gap-2"
                 >
-                  <BookOpen className="h-4 w-4" />
+
                   View Docs
-                </Button>
+
               </div>
 
               <div className="space-y-4">
@@ -517,9 +517,9 @@ MIT License - see LICENSE file for details
                 <Settings className="h-5 w-5" />
                 Configuration Settings
               </CardTitle>
-              <CardDescription>
+
                 Configure your platform settings and API credentials
-              </CardDescription>
+
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -587,16 +587,16 @@ MIT License - see LICENSE file for details
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Alert>
-                  <AlertDescription>
+
+
                     <ul className="space-y-1 text-sm">
                       <li>✓ Apache Spark ecosystem integration</li>
                       <li>✓ Real-time repository discovery</li>
                       <li>✓ ML-powered relevance scoring</li>
                       <li>✓ Community collaboration features</li>
                     </ul>
-                  </AlertDescription>
-                </Alert>
+
+
               </CardContent>
             </Card>
 
@@ -611,7 +611,7 @@ MIT License - see LICENSE file for details
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Alert>
+
                   <AlertDescription>
                     <ul className="space-y-1 text-sm">
                       <li>✓ GitHub Pages deployment</li>
@@ -622,7 +622,7 @@ MIT License - see LICENSE file for details
                   </AlertDescription>
                 </Alert>
               </CardContent>
-            </Card>
+
 
             <Card>
               <CardHeader>
@@ -635,7 +635,7 @@ MIT License - see LICENSE file for details
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Alert>
+
                   <AlertDescription>
                     <div className="font-mono text-xs space-y-1">
                       <div># Install dependencies</div>
@@ -647,8 +647,8 @@ MIT License - see LICENSE file for details
                       <div># Run tests</div>
                       <div>npm test</div>
                     </div>
-                  </AlertDescription>
-                </Alert>
+
+
               </CardContent>
             </Card>
 
@@ -664,7 +664,7 @@ MIT License - see LICENSE file for details
               </CardHeader>
               <CardContent>
                 <Alert>
-                  <AlertDescription>
+
                     <div className="space-y-2 text-sm">
                       <div>
                         <strong>License:</strong> MIT License
@@ -688,4 +688,3 @@ MIT License - see LICENSE file for details
       </Tabs>
     </div>
   )
-}
