@@ -296,7 +296,7 @@ export function SparkNotificationCenter() {
       toast.error('Failed to generate ecosystem insights')
     }
   }
-   */
+
   const generateContributionReport = () => {
     const report = {
       timestamp: new Date().toISOString(),
